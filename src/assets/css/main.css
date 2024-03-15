@@ -1,0 +1,213 @@
+/* ------------------ Fonts ---------------------- */
+@font-face {
+  font-family: "Tajawal";
+  src: url("../fonts/Tajawal-Black.woff2") format("woff2"), url("../fonts/Tajawal-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("../fonts/Tajawal-Bold.woff2") format("woff2"), url("../fonts/Tajawal-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("../fonts/Tajawal-ExtraBold.woff2") format("woff2"), url("../fonts/Tajawal-ExtraBold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("../fonts/Tajawal-ExtraLight.woff2") format("woff2"), url("../fonts/Tajawal-ExtraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("../fonts/Tajawal-Light.woff2") format("woff2"), url("../fonts/Tajawal-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("../fonts/Tajawal-Medium.woff2") format("woff2"), url("../fonts/Tajawal-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tajawal";
+  src: url("../fonts/Tajawal-Regular.woff2") format("woff2"), url("../fonts/Tajawal-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* colors */
+  --primary-clr: #6196a6;
+  --secondry-clr: #5f5d9c;
+  --while--clr: #fff;
+  /* transtion */
+  --primary-transition: 0.5s;
+}
+
+body {
+  direction: rtl;
+  text-align: right;
+  font-family: "Tajawal";
+  font-style: 17px;
+  font-weight: 450;
+}
+
+/* Container 
+  .container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      width: 1320px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .container {
+      width: 960px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      width: 720px;
+    }
+  }
+
+  @media (min-width: 576px) {
+    .container {
+      width: 540px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .container {
+      width: 99%;
+    }
+  } */
+/* ------------- Helper Classes ---------------- */
+/* Colors */
+.clr-primary {
+  color: var(--primary-clr);
+}
+
+.clr-primary-hover:hover {
+  color: var(--primary-clr);
+}
+
+.clr-secondry {
+  color: var(--secondry-clr);
+}
+
+.clr-secondry-hover:hover {
+  color: var(--secondry-clr);
+}
+
+.back-primary {
+  background-color: var(--primary-clr);
+}
+
+.back-secondry {
+  background-color: var(--secondry-clr);
+}
+
+.light-text {
+  color: #acacac;
+}
+
+/* transtion */
+.primary-transition {
+  transition: var(--primary-transition);
+}
+
+/* Font */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+/* line height */
+.lh-med {
+  line-height: 1.7;
+}
+
+/* Display */
+.d-block {
+  display: block;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+/* Animation */
+.up-down-animation {
+  animation: upDownAnimation 2s alternate linear infinite;
+}
+
+@keyframes upDownAnimation {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-30px);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
