@@ -23,7 +23,7 @@
                         <router-link class="nav-link  text-white me-1" to="contact-us">تواصل معنا</router-link>
                     </li>
                 </ul>
-                <ul class="navbar-nav ms-auto">
+                <ul v-if="!loginData.loginStatus" class="navbar-nav ms-auto">
                     <button @click="reg.login = true" data-bs-toggle="modal" data-bs-target="#regModal"
                         class="d-inline-block btn login-btn me-lg-3 mb-2">تسجيل
                         دخول
@@ -32,6 +32,11 @@
                     <button @click="reg.login = false" data-bs-toggle="modal" data-bs-target="#regModal"
                         class="d-inline-block btn signup-btn mb-2">إنشاء حساب
                         صيدلي</button>
+                </ul>
+                <ul v-else class="navbar-nav ms-auto">
+                    <router-link to="/editinfo" class="d-inline-block btn login-btn me-lg-3 mb-2">
+                        لوحة التحكم
+                    </router-link>
                 </ul>
             </div>
         </div>
@@ -106,12 +111,13 @@
 import router from "@/router";
 import logo from "../assets/images/logo.svg";
 import regestrationBox from "./regestrationBox.vue";
-
+import { loginData } from "./SignUp.vue"
+import { reg } from "./Navbar.vue";
 </script>
 
 <script>
-import { reactive } from "vue";
-export const reg = reactive({
-    login: true
-});
-</script>./RegestrationBox.vue
+// import { reactive } from "vue";
+// export const reg = reactive({
+//     login: true
+// });
+</script>

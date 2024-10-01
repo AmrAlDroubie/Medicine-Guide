@@ -82,6 +82,11 @@ $primary-transition: 0.5s;
   --primary-transition: 0.5s;
 }
 
+::selection{
+  color:#fff;
+  background-color: var(--secondry-clr);
+}
+
 body {
   direction: rtl;
   text-align: right;

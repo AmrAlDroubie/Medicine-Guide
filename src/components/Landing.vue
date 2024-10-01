@@ -5,7 +5,7 @@ import landingImage from "../assets/images/landing.svg";
 
 
 <template>
-    <section class="landing py-5">
+    <section class="landing pt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-12 mb-5">

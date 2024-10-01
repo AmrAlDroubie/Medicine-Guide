@@ -10,9 +10,15 @@
                         الذي تحتاجه
                     </h1>
                     <div class="d-flex  align-items-center justify-content-between search-input ">
-                        <input @input="e => searchValue = e.target.value" :value="searchValue" class="border-0"
-                            type="text" placeholder="اكتب اسم الدواء هنا">
-
+                        <input @keyup.enter="{ searching(searchValue); console.log(searchValue) }"
+                            @input="e => searchValue = e.target.value" :value="searchValue" class="border-0" type="text"
+                            placeholder="اكتب اسم الدواء هنا">
+                        <select class="border-0" @change="(e) => { searchCity = e.target.value }">
+                            <option value="false">اختر المدينة (اختياري)
+                            </option>
+                            <option value="حمص">حمص</option>
+                            <option value="حلب">حلب</option>
+                        </select>
                         <i @click="searching(searchValue)"
                             class="fas input-search-btn fa-search back-secondry text-white"></i>
                     </div>
@@ -20,13 +26,15 @@
             </div>
         </div>
     </section>
-    <SearchResult :medcines="data" />
-    <!-- <div v-for="item in data">
-        {{ item.medcine }}
-        {{ item.pharmacy }}
-        {{ item.imgUrl }}
-        {{ item.mapUrl }}
-    </div> -->
+    <div v-if="loadingMeds" class="col-12 mt-5">
+        <div class="spinner-grow text-primary mx-auto">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    <SearchResult v-else :medcines="data" />
+    <div v-if="emptySearch && !loadingMeds" class="fs-2 fw-bold text-center my-5">
+        عذرا لا يوجد نتائج
+    </div>
 </template>
 
 
@@ -38,7 +46,16 @@
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 550px;
+
+    select {
+        margin-left: 20px;
+
+        &:focus {
+            outline: none;
+        }
+    }
 }
+
 
 h1 {
     line-height: 56px;
@@ -96,11 +113,13 @@ import SearchResult from "./SearchResult.vue"
 <script>
 
 export default {
-
     data() {
         return {
             data: null,
             searchValue: null,
+            searchCity: null,
+            emptySearch: false,
+            loadingMeds: false,
         }
     },
     components: {
@@ -110,20 +129,41 @@ export default {
     name: "Search",
     methods: {
         async fetchData(searchValue) {
-            const res = await fetch(`http://localhost:3000/${searchValue}`);
+            const header = {
+                method: 'get',
+                mode: 'cors',
+                header: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                }
+            };
+            const url = this.searchCity && this.searchCity != 'false' ? `${searchValue}/${this.searchCity}` : `${searchValue}`;
+            const res = await fetch(`http://127.0.0.1:8000/api/search/${url}`);
             const data = await res.json();
             return data;
         },
         async searching(searchValue) {
-            const meds = await this.fetchData(searchValue);
-            this.data = meds;
+            if (!this.searchValue) return;
+            this.loadingMeds = true;
+            try {
+                const meds = await this.fetchData(searchValue);
+                this.data = meds.data;
+                if (this.data.length == 0) {
+                    this.emptySearch = true;
+                } else {
+                    this.emptySearch = false;
+                }
+            } catch (e) {
+                this.emptySearch = false;
+            }
+            setTimeout(() => {
+                this.loadingMeds = false;
+            }, 1000)
+
 
         }
     },
-    // async created() {
-    //     this.data = await this.fetchData();
-    //     console.log(this.data);
-    // }
+
 }
 
 </script>
