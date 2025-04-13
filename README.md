@@ -1,6 +1,4 @@
-Based on the image you provided, here's a README.md draft for your Vue.js Single Page Application (SPA) project to search for medicines across multiple pharmacies.
 
----
 
 # Medicine Search Application (Vue.js SPA)
 
